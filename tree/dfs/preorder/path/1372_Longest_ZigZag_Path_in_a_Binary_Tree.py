@@ -44,6 +44,7 @@ The number of nodes in the tree is in the range [1, 5 * 104].
 # dir or start from this dir but set length to 1.
 # 2. so actually we are counting every possible paths from 
 # every possible nodes.
+# 3. We keep track of prev_dir to decide where to move next.
 
 # Definition for a binary tree node.
 # class TreeNode:
@@ -52,17 +53,16 @@ The number of nodes in the tree is in the range [1, 5 * 104].
 #         self.left = left
 #         self.right = right
 class Solution:
-    def traverse(self, node, dir, length):
+    def traverse(self, node, prev_dir, length):
         if not node:
             return
         self.longest = max(self.longest, length)
-        if dir == "L":
+        if prev_dir == "L":
             self.traverse(node.right, "R", length + 1)
             self.traverse(node.left, "L", 1)
         else:
             self.traverse(node.left, "L", length + 1)
             self.traverse(node.right, "R", 1)
-            
     def longestZigZag(self, root: Optional[TreeNode]) -> int:
         if not root:
             return 0
