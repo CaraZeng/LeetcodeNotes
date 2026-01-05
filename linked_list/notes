@@ -1,0 +1,4 @@
+1. when to use dummy node?
+If you might delete or change the head node, use dummy.
+
+2. we cant obtain the previous node of curr node when we are dealing with single LinkedList
