@@ -39,8 +39,8 @@ solution using the divide and conquer approach, which is more subtle.
 
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
-        max_subarray = curr_subarray = nums[0]
+        max_sum = curr = nums[0]
         for i in range(1, len(nums)):
-            curr_subarray = max(curr_subarray + nums[i], nums[i])
-            max_subarray = max(curr_subarray, max_subarray)
-        return max_subarray
+            curr = max(curr + nums[i], nums[i])
+            max_sum = max(curr, max_sum)
+        return max_sum
