@@ -20,21 +20,20 @@ Constraints:
 # 2. notice the rules: left must <= n and right must <= left.
 
 class Solution:
-    def backtrack(self, path_list, left, right, n, res):
-        if left == n and right == n:
-            res.append("".join(path_list))
-            return
-        if left < n:
-            path_list.append('(')
-            self.backtrack(path_list, left + 1, right, n, res)
-            path_list.pop()
-        if right < left:
-            path_list.append(')')
-            self.backtrack(path_list, left, right + 1, n, res)
-            path_list.pop()
-        
     def generateParenthesis(self, n: int) -> List[str]:
         res = []
-        path_list = []
-        self.backtrack(path_list, 0, 0, n, res)
+        stack = []
+        def backtrack(openN, closedN):
+            if openN == closedN == n:
+                res.append("".join(stack))
+                return res
+            if openN < n:
+                stack.append("(")
+                backtrack(openN + 1, closedN)
+                stack.pop()
+            if closedN < openN:
+                stack.append(")")
+                backtrack(openN, closedN + 1)
+                stack.pop()
+        backtrack(0, 0)
         return res
