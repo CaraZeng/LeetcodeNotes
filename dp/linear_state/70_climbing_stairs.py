@@ -25,7 +25,8 @@ Constraints:
 """
 
 # Key Note:
-# 1. 
+# 1. for i to go to i - 1 and i - 2, it each got
+# one way, so for i, it just adds them tgt.
 
 class Solution:
     def climbStairs(self, n: int) -> int:

@@ -27,7 +27,7 @@ n == matrix[i].length
 class Solution:
     def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
         top, bottom, left, right = 0, len(matrix) - 1, 0, len(matrix[0]) - 1
-        result = []
+        res = []
         while left <= right and top <= bottom:
             for j in range(left, right + 1):
                 result.append(matrix[top][j])
@@ -43,4 +43,4 @@ class Solution:
                 for i in range(bottom, top - 1, -1):
                     result.append(matrix[i][left])
                 left += 1
-        return result
+        return res
